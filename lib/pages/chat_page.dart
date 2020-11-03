@@ -75,12 +75,18 @@ class _ChatPageState extends State<ChatPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.groupName, style: TextStyle(color: Colors.white)),
+        title: Text(widget.groupName, style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
         centerTitle: true,
-        backgroundColor: Colors.black87,
+        backgroundColor: Colors.blue[800],
         elevation: 0.0,
       ),
       body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/images/white_bg_1.jpg"),
+            fit: BoxFit.cover,
+          ),
+        ),
         child: Stack(
           children: <Widget>[
             _chatMessages(),
@@ -89,23 +95,32 @@ class _ChatPageState extends State<ChatPage> {
               alignment: Alignment.bottomCenter,
               width: MediaQuery.of(context).size.width,
               child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
-                color: Colors.grey[700],
+                //padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
+                padding: EdgeInsets.only(
+                  //top: 50,
+                  bottom: 3,
+                  left: 10,
+                  right: 10,
+                ),
                 child: Row(
                   children: <Widget>[
                     Expanded(
                       child: TextField(
                         controller: messageEditingController,
                         style: TextStyle(
-                          color: Colors.white
+                          color: Colors.black
                         ),
                         decoration: InputDecoration(
+                          fillColor: Colors.white.withOpacity(0.8),
+                          filled: true,
                           hintText: "Send a message ...",
                           hintStyle: TextStyle(
-                            color: Colors.white38,
+                            color: Colors.black,
                             fontSize: 16,
                           ),
-                          border: InputBorder.none
+                          border: const OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(40.0))),
                         ),
                       ),
                     ),
