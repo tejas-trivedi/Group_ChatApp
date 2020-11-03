@@ -2,11 +2,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:group_chat_app/helper/helper_functions.dart';
-import 'package:group_chat_app/pages/home_page.dart';
+import 'package:group_chat_app/pages/group_page.dart';
 import 'package:group_chat_app/services/auth_service.dart';
 import 'package:group_chat_app/services/database_service.dart';
-import 'package:group_chat_app/shared/constants.dart';
-import 'package:group_chat_app/shared/loading.dart';
+//import 'package:group_chat_app/shared/constants.dart';
+import 'package:group_chat_app/ui/loading.dart';
 import 'package:group_chat_app/ui/custom_button.dart';
 
 class Login extends StatefulWidget {
@@ -56,7 +56,7 @@ class _LoginState extends State<Login> {
             print("Full Name: $value");
           });
 
-          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => HomePage()));
+          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => GroupPage()));
         }
         else {
           setState(() {
@@ -173,6 +173,7 @@ class _LoginState extends State<Login> {
                   SizedBox(height: 10.0),
                 
                   Text(error, style: TextStyle(color: Colors.red, fontSize: 14.0)),
+                  
                 ],
               ),
             ],

@@ -3,19 +3,20 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:group_chat_app/helper/helper_functions.dart';
 import 'package:group_chat_app/pages/authenticate_page.dart';
-import 'package:group_chat_app/pages/chat_page.dart';
+//import 'package:group_chat_app/pages/chat_page.dart';
 import 'package:group_chat_app/pages/profile_page.dart';
 import 'package:group_chat_app/pages/search_page.dart';
 import 'package:group_chat_app/services/auth_service.dart';
 import 'package:group_chat_app/services/database_service.dart';
 import 'package:group_chat_app/widgets/group_tile.dart';
+import 'package:group_chat_app/ui/clipper.dart';
 
-class HomePage extends StatefulWidget {
+class GroupPage extends StatefulWidget {
   @override
-  _HomePageState createState() => _HomePageState();
+  _GroupPageState createState() => _GroupPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _GroupPageState extends State<GroupPage> {
 
   // data
   final AuthService _auth = AuthService();
@@ -46,7 +47,7 @@ class _HomePageState extends State<HomePage> {
             onTap: () {
               _popupDialog(context);
             },
-            child: Icon(Icons.add_circle, color: Colors.grey[700], size: 75.0)
+            child: Icon(Icons.add_circle, color: Colors.blue[400], size: 75.0)
           ),
           SizedBox(height: 20.0),
           Text("You've not joined any group, tap on the 'add' icon to create a group or search for groups by tapping on the search button below."),
@@ -62,13 +63,13 @@ class _HomePageState extends State<HomePage> {
       stream: _groups,
       builder: (BuildContext context, AsyncSnapshot snapshot) {
       //builder: (context, AsyncSnapshot snapshot) {
-        print("Does hasdata?");
-        print(snapshot.hasData);
+        //print("Does hasdata?");
+        //print(snapshot.hasData);
         //print(snapshot.data['groups']);
         if(snapshot.hasData) {
-          print("outer iffffff");
-          if(snapshot.data/*['groups']*/ != null) {
-            print("inner iffffff");
+          //print("outer iffffff");
+          if(snapshot.data['groups'] != null) {         //snapshot.data != null
+            //print("inner iffffff");
             //print(snapshot.data['groups'].length);
             if(snapshot.data['groups'].length != 0) {
               return ListView.builder(
@@ -89,7 +90,6 @@ class _HomePageState extends State<HomePage> {
           }
         }
         else {
-          print("Heyyyyyyyyyyyyaaaaaaaaa");
           return Center(
             child: CircularProgressIndicator()
           );
@@ -162,6 +162,7 @@ class _HomePageState extends State<HomePage> {
         style: TextStyle(
           fontSize: 15.0,
           height: 2.0,
+          fontWeight: FontWeight.bold,
           color: Colors.black             
         )
       ),
@@ -185,9 +186,9 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Groups', style: TextStyle(color: Colors.white, fontSize: 27.0, fontWeight: FontWeight.bold)),
-        backgroundColor: Colors.black87,
-        elevation: 0.0,
+        title: Text('My Groups', style: TextStyle(color: Colors.white, fontSize: 25.0, fontWeight: FontWeight.bold)),
+        backgroundColor: Colors.blue[800],
+        elevation: 20.0,
         actions: <Widget>[
           IconButton(
             padding: EdgeInsets.symmetric(horizontal: 20.0),
@@ -202,9 +203,9 @@ class _HomePageState extends State<HomePage> {
         child: ListView(
           padding: EdgeInsets.symmetric(vertical: 50.0),
           children: <Widget>[
-            Icon(Icons.account_circle, size: 150.0, color: Colors.grey[700]),
+            Icon(Icons.account_circle, size: 150.0, color: Colors.grey[600]),
             SizedBox(height: 15.0),
-            Text(_userName, textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.bold)),
+            Text("Hello $_userName", textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.bold, fontSize:20)),
             SizedBox(height: 7.0),
             ListTile(
               onTap: () {},
@@ -213,6 +214,7 @@ class _HomePageState extends State<HomePage> {
               leading: Icon(Icons.group),
               title: Text('Groups'),
             ),
+            Divider(height: 0.0),
             ListTile(
               onTap: () {
                 Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => ProfilePage(userName: _userName, email: _email)));
@@ -221,6 +223,7 @@ class _HomePageState extends State<HomePage> {
               leading: Icon(Icons.account_circle),
               title: Text('Profile'),
             ),
+            Divider(height: 0.0),
             ListTile(
               onTap: () async {
                 await _auth.signOut();

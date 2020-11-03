@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:group_chat_app/helper/helper_functions.dart';
 import 'package:group_chat_app/pages/authenticate_page.dart';
-import 'package:group_chat_app/pages/home_page.dart';
-import 'package:group_chat_app/pages/login.dart';
+import 'package:group_chat_app/pages/group_page.dart';
+import 'package:group_chat_app/pages/login_page.dart';
 import 'package:group_chat_app/pages/register_page.dart';
 import 'package:group_chat_app/ui/custom_button.dart';
 import 'package:group_chat_app/ui/clipper.dart';

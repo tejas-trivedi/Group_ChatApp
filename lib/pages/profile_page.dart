@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:group_chat_app/pages/authenticate_page.dart';
-import 'package:group_chat_app/pages/home_page.dart';
+import 'package:group_chat_app/pages/group_page.dart';
 import 'package:group_chat_app/services/auth_service.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -23,13 +23,13 @@ class ProfilePage extends StatelessWidget {
         child: ListView(
           padding: EdgeInsets.symmetric(vertical: 50.0),
           children: <Widget>[
-            Icon(Icons.account_circle, size: 150.0, color: Colors.grey[700]),
+            Icon(Icons.account_circle, size: 150.0, color: Colors.grey[600]),
             SizedBox(height: 15.0),
-            Text(userName, textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.bold)),
+            Text("Hello $userName", textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
             SizedBox(height: 7.0),
             ListTile(
               onTap: () {
-                Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => HomePage()));
+                Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => GroupPage()));
               },
               contentPadding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 5.0),
               leading: Icon(Icons.group),
@@ -60,7 +60,7 @@ class ProfilePage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
-              Icon(Icons.account_circle, size: 200.0, color: Colors.grey[700]),
+              Icon(Icons.account_circle, size: 200.0, color: Colors.grey[600]),
               SizedBox(height: 15.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
