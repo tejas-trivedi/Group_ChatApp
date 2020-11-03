@@ -100,8 +100,8 @@ class _SearchPageState extends State<SearchPage> {
     return ListTile(
       contentPadding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
       leading: CircleAvatar(
-        radius: 30.0,
-        backgroundColor: Colors.blueAccent,
+        radius: 25.0,
+        backgroundColor: Colors.cyan[400],
         child: Text(groupName.substring(0, 1).toUpperCase(), style: TextStyle(color: Colors.white))
       ),
       title: Text(groupName, style: TextStyle(fontWeight: FontWeight.bold)),
@@ -129,14 +129,14 @@ class _SearchPageState extends State<SearchPage> {
         child: _isJoined ? Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10.0),
-            color: Colors.black87,
+            color: Colors.redAccent,
             border: Border.all(
               color: Colors.white,
               width: 1.0
             )
           ),
           padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-          child: Text('Joined', style: TextStyle(color: Colors.white)),
+          child: Text('Leave', style: TextStyle(color: Colors.white)),
         )
         :
         Container(
@@ -159,8 +159,8 @@ class _SearchPageState extends State<SearchPage> {
       key: _scaffoldKey,
       appBar: AppBar(
         elevation: 0.0,
-        backgroundColor: Colors.black87,
-        title: Text('Search', style: TextStyle(fontSize: 27.0, fontWeight: FontWeight.bold, color: Colors.white)),
+        backgroundColor: Colors.blue[800],
+        title: Text('Search', style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold, color: Colors.white)),
       ),
       body: // isLoading ? Container(
       //   child: Center(
@@ -172,23 +172,28 @@ class _SearchPageState extends State<SearchPage> {
         child: Column(
           children: [
             Container(
+              
               padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
-              color: Colors.grey[700],
+              //color: Colors.grey[500],
               child: Row(
                 children: [
                   Expanded(
                     child: TextField(
                       controller: searchEditingController,
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.black,
                       ),
                       decoration: InputDecoration(
+                        fillColor: Colors.white.withOpacity(0.8),
+                        filled: true,
                         hintText: "Search groups...",
                         hintStyle: TextStyle(
-                          color: Colors.white38,
+                          color: Colors.black,
                           fontSize: 16,
                         ),
-                        border: InputBorder.none
+                        border: const OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(40.0))),
                       ),
                     ),
                   ),

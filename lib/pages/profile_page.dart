@@ -16,7 +16,7 @@ class ProfilePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Profile', style: TextStyle(color: Colors.white, fontSize: 27.0, fontWeight: FontWeight.bold)),
-        backgroundColor: Colors.black87,
+        backgroundColor: Colors.blue[800],
         elevation: 0.0,  
       ),
       drawer: Drawer(
@@ -35,6 +35,7 @@ class ProfilePage extends StatelessWidget {
               leading: Icon(Icons.group),
               title: Text('Groups'),
             ),
+            Divider(height: 0.0),
             ListTile(
               selected: true,
               onTap: () {},
@@ -42,6 +43,7 @@ class ProfilePage extends StatelessWidget {
               leading: Icon(Icons.account_circle),
               title: Text('Profile'),
             ),
+            Divider(height: 0.0),
             ListTile(
               onTap: () async {
                 await _auth.signOut();
@@ -65,6 +67,7 @@ class ProfilePage extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
+                  Icon(Icons.account_circle,color: Colors.blue[700]),
                   Text('Full Name', style: TextStyle(fontSize: 17.0)),
                   Text(userName, style: TextStyle(fontSize: 17.0)),
                 ],
@@ -75,6 +78,7 @@ class ProfilePage extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
+                  Icon(Icons.email, color: Colors.blue[700]),
                   Text('Email', style: TextStyle(fontSize: 17.0)),
                   Text(email, style: TextStyle(fontSize: 17.0)),
                 ],

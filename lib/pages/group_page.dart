@@ -200,6 +200,8 @@ class _GroupPageState extends State<GroupPage> {
         ],
       ),
       drawer: Drawer(
+        child: Container(color: Colors.white,
+
         child: ListView(
           padding: EdgeInsets.symmetric(vertical: 50.0),
           children: <Widget>[
@@ -235,6 +237,7 @@ class _GroupPageState extends State<GroupPage> {
             ),
           ],
         ),
+        ),
       ),
       body: groupsList(),
       floatingActionButton: FloatingActionButton(
@@ -242,7 +245,7 @@ class _GroupPageState extends State<GroupPage> {
           _popupDialog(context);
         },
         child: Icon(Icons.add, color: Colors.white, size: 30.0),
-        backgroundColor: Colors.grey[700],
+        backgroundColor: Colors.blue[800],
         elevation: 0.0,
       ),
     );
