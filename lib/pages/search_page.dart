@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:group_chat_app/helper/helper_functions.dart';
 import 'package:group_chat_app/pages/chat_page.dart';
 import 'package:group_chat_app/services/database_service.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class SearchPage extends StatefulWidget {
   @override
@@ -149,6 +150,7 @@ class _SearchPageState extends State<SearchPage> {
         ),
       ),
     );
+    
   }
 
 
@@ -158,7 +160,13 @@ class _SearchPageState extends State<SearchPage> {
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
-        elevation: 0.0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.horizontal(
+            left: Radius.circular(10),
+            right: Radius.circular(10),
+          ),
+        ),
+        elevation: 20.0,
         backgroundColor: Colors.blue[800],
         title: Text('Search', style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold, color: Colors.white)),
       ),
@@ -172,6 +180,7 @@ class _SearchPageState extends State<SearchPage> {
         child: Column(
           children: [
             Container(
+              margin: EdgeInsets.all(2),
               decoration: BoxDecoration(
                 shape: BoxShape.rectangle,
                 borderRadius: BorderRadius.all(Radius.circular(25.0)),
@@ -219,7 +228,7 @@ class _SearchPageState extends State<SearchPage> {
                 ],
               ),
             ),
-            isLoading ? Container(child: Center(child: CircularProgressIndicator())) : groupList()
+            isLoading ? Container(child: Center(child: SpinKitFadingCircle(color: Colors.blue))) : groupList()
           ],
         ),
       ),

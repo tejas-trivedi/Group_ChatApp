@@ -50,7 +50,6 @@ class _MyAppState extends State<MyApp> {
 //}
 
 
-
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -143,4 +142,3 @@ class MyHomePage extends StatelessWidget {
     );
   }
 }
-

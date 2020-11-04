@@ -76,7 +76,7 @@ class _ChatPageState extends State<ChatPage> {
             style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
         centerTitle: true,
         backgroundColor: Colors.blue[800],
-        elevation: 0.0,
+        elevation: 10.0,
       ),
       body: Container(
         //margin: EdgeInsets.only(bottom:50),
@@ -88,10 +88,14 @@ class _ChatPageState extends State<ChatPage> {
         ),
         child: Stack(
           children: <Widget>[
-            _chatMessages(),
-            // Container(),
+
             Container(
-              //margin: EdgeInsets.only(top: 50.0),
+              alignment: Alignment.topRight,
+              child:  _chatMessages(),
+              padding: EdgeInsets.only(bottom: 65),
+            ),
+            Container(
+              //margin: EdgeInsets.only(bottom: 50.0),
               alignment: Alignment.bottomCenter,
               width: MediaQuery.of(context).size.width,
               child: Container(
