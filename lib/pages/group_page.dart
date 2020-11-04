@@ -62,14 +62,8 @@ class _GroupPageState extends State<GroupPage> {
     return StreamBuilder(
       stream: _groups,
       builder: (BuildContext context, AsyncSnapshot snapshot) {
-      //builder: (context, AsyncSnapshot snapshot) {
-        //print("Does hasdata?");
-        //print(snapshot.hasData);
-        //print(snapshot.data['groups']);
         if(snapshot.hasData) {
-          //print("outer iffffff");
           if(snapshot.data['groups'] != null) {         //snapshot.data != null
-            //print("inner iffffff");
             //print(snapshot.data['groups'].length);
             if(snapshot.data['groups'].length != 0) {
               return ListView.builder(
@@ -154,6 +148,7 @@ class _GroupPageState extends State<GroupPage> {
     );
 
     AlertDialog alert = AlertDialog(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       title: Text("Create a group"),
       content: TextField(
         onChanged: (val) {
@@ -214,7 +209,7 @@ class _GroupPageState extends State<GroupPage> {
               selected: true,
               contentPadding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 5.0),
               leading: Icon(Icons.group),
-              title: Text('Groups'),
+              title: Text('Groups', style: TextStyle(fontSize: 16)),
             ),
             Divider(height: 0.0),
             ListTile(
@@ -223,7 +218,7 @@ class _GroupPageState extends State<GroupPage> {
               },
               contentPadding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 5.0),
               leading: Icon(Icons.account_circle),
-              title: Text('Profile'),
+              title: Text('Profile', style: TextStyle(fontSize: 16)),
             ),
             Divider(height: 0.0),
             ListTile(
@@ -233,7 +228,7 @@ class _GroupPageState extends State<GroupPage> {
               },
               contentPadding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 5.0),
               leading: Icon(Icons.exit_to_app, color: Colors.red),
-              title: Text('Log Out', style: TextStyle(color: Colors.red)),
+              title: Text('Log Out', style: TextStyle(color: Colors.red, fontSize: 16)),
             ),
           ],
         ),

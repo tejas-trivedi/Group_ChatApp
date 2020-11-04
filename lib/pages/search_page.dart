@@ -172,13 +172,18 @@ class _SearchPageState extends State<SearchPage> {
         child: Column(
           children: [
             Container(
+              decoration: BoxDecoration(
+                shape: BoxShape.rectangle,
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                color: Colors.grey[100],
+              ),
               
               padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
               //color: Colors.grey[500],
               child: Row(
                 children: [
                   Expanded(
-                    child: TextField(
+                    child: TextField(         
                       controller: searchEditingController,
                       style: TextStyle(
                         color: Colors.black,
