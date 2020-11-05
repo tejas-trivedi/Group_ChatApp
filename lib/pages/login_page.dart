@@ -33,17 +33,19 @@ class _LoginState extends State<Login> {
       setState(() {
         _isLoading = true;
       });
-  //Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => HomePage()));
+      //Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => HomePage()));
 
-      await _auth.signInWithEmailAndPassword(email, password).then((result) async {
+      await _auth
+          .signInWithEmailAndPassword(email, password)
+          .then((result) async {
         if (result != null) {
-          QuerySnapshot userInfoSnapshot = await DatabaseService().getUserData(email);
+          QuerySnapshot userInfoSnapshot =
+              await DatabaseService().getUserData(email);
 
           await HelperFunctions.saveUserLoggedInSharedPreference(true);
           await HelperFunctions.saveUserEmailSharedPreference(email);
           await HelperFunctions.saveUserNameSharedPreference(
-            userInfoSnapshot.documents[0].data['fullName']
-          );
+              userInfoSnapshot.documents[0].data['fullName']);
 
           print("Signed In");
           await HelperFunctions.getUserLoggedInSharedPreference().then((value) {
@@ -56,9 +58,9 @@ class _LoginState extends State<Login> {
             print("Full Name: $value");
           });
 
-          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => GroupPage()));
-        }
-        else {
+          Navigator.of(context).pushReplacement(
+              MaterialPageRoute(builder: (context) => GroupPage()));
+        } else {
           setState(() {
             error = 'Error signing in!';
             _isLoading = false;
@@ -70,15 +72,33 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
-    return _isLoading ? Loading() : Scaffold(
-      body: Form(
-        key: _formKey,
-        child: Container(
-          color: Colors.white,
-          child: ListView(
-            padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 80.0),
-            children: <Widget>[
-              Expanded(
+    return _isLoading
+        ? Loading()
+        : Scaffold(
+            body: Form(
+            key: _formKey,
+            child: Container(
+              color: Colors.white,
+              child: ListView(
+                padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 80.0),
+                children: <Widget>[
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Hero(
+                          tag: 'logo',
+                          child: Container(
+                            child: Image.asset(
+                              "assets/images/blue_circle.jpg",
+                              height: 150,
+                              width: 150,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  /*Expanded(
                 child: Hero(
                   tag: 'logo',
                   child: Container(
@@ -89,97 +109,94 @@ class _LoginState extends State<Login> {
                     ),
                   ),
                 ),
-              ),
-              SizedBox(
-                height: 0.0,
-              ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Text("Welcome Back", style: TextStyle(color: Colors.black54, fontSize: 40.0, fontWeight: FontWeight.bold)),
-                
-                  SizedBox(height: 30.0),
-                
-                  Text("Login", style: TextStyle(color: Colors.black, fontSize: 25.0)),
-
-                  SizedBox(height: 20.0),
-                
-                  TextFormField(
-                    //style: TextStyle(color: Colors.black87),
-                    decoration: InputDecoration(
-                    hintText: "Enter Your Email...",
-                    border: const OutlineInputBorder(),
-                    contentPadding: EdgeInsets.all(18.0),
-                    ),
-                    //decoration: textInputDecoration.copyWith(labelText: 'Email'),
-                    validator: (val) {
-                      return RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(val) ? null : "Please enter a valid email";
-                    },
-                    onChanged: (val) {
-                      setState(() {
-                        email = val;
-                      });
-                    },
+              ),*/
+                  SizedBox(
+                    height: 0.0,
                   ),
-                
-                  SizedBox(height: 15.0),
-                
-                  TextFormField(
-                    decoration: InputDecoration(
-                    hintText: "Enter Your Password",
-                    border: const OutlineInputBorder(),
-                    contentPadding: EdgeInsets.all(18.0),
-                    ),
-                    //decoration: textInputDecoration.copyWith(labelText: 'Password'),
-                    obscureText: true,
-                    onChanged: (val) {
-                      setState(() {
-                        password = val;
-                      });
-                    },
-                  ),
-                
-                  SizedBox(height: 20.0),
-                
-                  CustomButton(
-                  text: "Login",
-                  callback: () async {
-                    await _onSignIn();
-                  },
-                ),
-                
-                  SizedBox(height: 10.0),
-                  
-                  Text.rich(
-                    TextSpan(
-                      text: "Don't have an account? ",
-                      style: TextStyle(color: Colors.black, fontSize: 14.0),
-                      children: <TextSpan>[
-                        TextSpan(
-                          text: 'Register here',
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Text("Welcome Back",
                           style: TextStyle(
-                            color: Colors.black,
-                            decoration: TextDecoration.underline
-                          ),
-                          recognizer: TapGestureRecognizer()..onTap = () {
-                            widget.toggleView();
-                          },
+                              color: Colors.black54,
+                              fontSize: 40.0,
+                              fontWeight: FontWeight.bold)),
+                      SizedBox(height: 30.0),
+                      Text("Login",
+                          style:
+                              TextStyle(color: Colors.black, fontSize: 25.0)),
+                      SizedBox(height: 20.0),
+                      TextFormField(
+                        //style: TextStyle(color: Colors.black87),
+                        decoration: InputDecoration(
+                          hintText: "Enter Your Email...",
+                          border: const OutlineInputBorder(),
+                          contentPadding: EdgeInsets.all(18.0),
                         ),
-                      ],
-                    ),
+                        //decoration: textInputDecoration.copyWith(labelText: 'Email'),
+                        validator: (val) {
+                          return RegExp(
+                                      r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                                  .hasMatch(val)
+                              ? null
+                              : "Please enter a valid email";
+                        },
+                        onChanged: (val) {
+                          setState(() {
+                            email = val;
+                          });
+                        },
+                      ),
+                      SizedBox(height: 15.0),
+                      TextFormField(
+                        decoration: InputDecoration(
+                          hintText: "Enter Your Password",
+                          border: const OutlineInputBorder(),
+                          contentPadding: EdgeInsets.all(18.0),
+                        ),
+                        //decoration: textInputDecoration.copyWith(labelText: 'Password'),
+                        obscureText: true,
+                        onChanged: (val) {
+                          setState(() {
+                            password = val;
+                          });
+                        },
+                      ),
+                      SizedBox(height: 20.0),
+                      CustomButton(
+                        text: "Login",
+                        callback: () async {
+                          await _onSignIn();
+                        },
+                      ),
+                      SizedBox(height: 10.0),
+                      Text.rich(
+                        TextSpan(
+                          text: "Don't have an account? ",
+                          style: TextStyle(color: Colors.black, fontSize: 14.0),
+                          children: <TextSpan>[
+                            TextSpan(
+                              text: 'Register here',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  decoration: TextDecoration.underline),
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () {
+                                  widget.toggleView();
+                                },
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 10.0),
+                      Text(error,
+                          style: TextStyle(color: Colors.red, fontSize: 14.0)),
+                    ],
                   ),
-                
-                  SizedBox(height: 10.0),
-                
-                  Text(error, style: TextStyle(color: Colors.red, fontSize: 14.0)),
-                  
                 ],
               ),
-            ],
-          ),
-        ),
-      )
-    );
+            ),
+          ));
   }
 }
