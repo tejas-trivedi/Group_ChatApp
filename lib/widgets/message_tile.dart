@@ -41,7 +41,7 @@ class MessageTile extends StatelessWidget {
           children: <Widget>[
             Text(sender.toUpperCase(), textAlign: TextAlign.start, style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.bold, color: Colors.black, letterSpacing: -0.5)),
             SizedBox(height: 7.0),
-            Text(message, textAlign: TextAlign.start, style: TextStyle(fontSize: 16.0, color: Colors.black)),
+            SelectableText(message, textAlign: TextAlign.start, style: TextStyle(fontSize: 16.0, color: Colors.black)),
           ],
         ),
       ),

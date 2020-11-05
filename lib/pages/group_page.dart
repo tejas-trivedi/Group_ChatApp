@@ -45,10 +45,14 @@ class _GroupPageState extends State<GroupPage> {
                   _popupDialog(context);
                 },
                 child: Icon(Icons.add_circle,
-                    color: Colors.blue[400], size: 75.0)),
+                    color: Colors.blue[800], size: 60.0)),
             SizedBox(height: 20.0),
             Text(
-                "You've not joined any group, tap on the 'add' icon to create a group or search for groups by tapping on the search button below."),
+                "You have not joined any groups yet. Tap on 'add' button to create a group or search for groups using search button above :)",
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 15.0,
+                    fontWeight: FontWeight.w300)),
           ],
         ));
   }
@@ -241,14 +245,14 @@ class _GroupPageState extends State<GroupPage> {
                     style: TextStyle(color: Colors.red, fontSize: 16)),
               ),
               ClipPath(
-              clipper: FooterWaveClipper(),
-              child: Container(
-                height: 300,
-                decoration: BoxDecoration(
-                  color: Colors.blue[800],
+                clipper: FooterWaveClipper(),
+                child: Container(
+                  height: 300,
+                  decoration: BoxDecoration(
+                    color: Colors.blue[800],
+                  ),
                 ),
               ),
-            ),
             ],
           ),
         ),
