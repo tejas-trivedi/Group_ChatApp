@@ -46,7 +46,6 @@ class _SearchPageState extends State<SearchPage> {
           .searchByName(searchEditingController.text)
           .then((snapshot) {
         searchResultSnapshot = snapshot;
-        //print("$searchResultSnapshot");
         setState(() {
           isLoading = false;
           hasUserSearched = true;
@@ -111,7 +110,6 @@ class _SearchPageState extends State<SearchPage> {
             setState(() {
               _isJoined = !_isJoined;
             });
-            // await DatabaseService(uid: _user.uid).userJoinGroup(groupId, groupName, userName);
             _showScaffold('Successfully joined the group "$groupName"');
             Future.delayed(Duration(milliseconds: 2000), () {
               Navigator.of(context).push(MaterialPageRoute(
@@ -148,7 +146,6 @@ class _SearchPageState extends State<SearchPage> {
     );
   }
 
-  // building the search page widget
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -168,12 +165,7 @@ class _SearchPageState extends State<SearchPage> {
                 fontWeight: FontWeight.bold,
                 color: Colors.white)),
       ),
-      body: // isLoading ? Container(
-          //   child: Center(
-          //     child: CircularProgressIndicator(),
-          //   ),
-          // )
-          // :
+      body: 
           Container(
         child: Column(
           children: [

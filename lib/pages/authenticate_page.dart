@@ -6,7 +6,6 @@ class AuthenticatePage extends StatefulWidget {
   @override
   _AuthenticatePageState createState() => _AuthenticatePageState();
 }
-
 class _AuthenticatePageState extends State<AuthenticatePage> {
 
   bool _showSignIn = true;
