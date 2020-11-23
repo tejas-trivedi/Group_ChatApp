@@ -8,7 +8,7 @@ import 'package:group_chat_app/pages/profile_page.dart';
 import 'package:group_chat_app/pages/search_page.dart';
 import 'package:group_chat_app/services/auth_service.dart';
 import 'package:group_chat_app/services/database_service.dart';
-import 'package:group_chat_app/widgets/group_tile.dart';
+import 'package:group_chat_app/widgets/group_container.dart';
 import 'package:group_chat_app/ui/clipper.dart';
 
 class GroupPage extends StatefulWidget {

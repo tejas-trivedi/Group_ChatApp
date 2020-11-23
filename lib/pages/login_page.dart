@@ -23,7 +23,6 @@ class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
   bool _isLoading = false;
 
-  // text field state
   String email = '';
   String password = '';
   String error = '';
@@ -69,7 +68,6 @@ class _LoginState extends State<Login> {
       });
     }
   }
-
   @override
   Widget build(BuildContext context) {
     return _isLoading
